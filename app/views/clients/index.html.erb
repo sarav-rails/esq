@@ -1,7 +1,102 @@
-<h1>Clients &amp; Matters</h1>
 
-<%= render 'client_matter_search' %>
 
+
+<%= form_for(:cmfilter, :url => { :controller => :clients, :action => :index }, :html => { :method => :get } ) do |f| %>
+  <table class="tcontent" width="100%" border="0" align="center" cellpadding="8" cellspacing="0">
+  <tr>
+    <td width="250" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td height="35" align="center" valign="middle"><h1>Search </h1></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="36%" align="left" valign="top"><input type="radio" name="cmfilter[status]" id="radio" value="radio" />
+              Active</td>
+            <td width="39%" align="left" valign="top"><input type="radio" name="cmfilter[status]" id="radio2" value="radio" />
+              Inactive </td>
+            <td width="25%" align="left" valign="top"><input type="radio" name="cmfilter[status]" id="radio3" value="radio" />
+              All</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="8" align="left" valign="top"></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">Name of client</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top"><input class="fieldw" type="text" name="textfield" id="textfield" /></td>
+      </tr>
+<tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"><input class="view1" type="submit" name="button" id="button" value="View" /></td>
+      </tr>
+    </table></td>
+    <td width="1" align="left" valign="top">
+		<%= image_tag('vetical_separator.png',width: "1",height: "477") %>
+		<!-- <img src="images/vetical_separator.png" width="1" height="477" />--></td>
+    <td width="250" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td height="35" align="center" valign="middle"><h1>ENTER NEW CLIENT  </h1></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">Client Name</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top"><!-- <input class="fieldw" type="text" name="textfield3" id="textfield3" />-->
+				 <%= f.text_field :cname, :value => @filter_cname,:class=>"fieldw" %>
+				</td>
+      </tr>
+  </td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"><input class="view1" type="submit" name="button2" id="button2" value="View" /></td>
+      </tr>
+    </table></td>
+    <td width="2" align="left" valign="top"><%= image_tag('vetical_separator.png',width: "1",height: "477") %></td>
+    <td width="250" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td height="35" align="center" valign="middle"><h1>ENTER NEW MATTER</h1></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="left" valign="top">Client</td>
+            <td align="right" valign="top"><%= f.text_field :cname, :value => @filter_cname, :class=>"fieldw" %></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="10" align="left" valign="top"></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">Matter Name</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top"><%= f.text_field :mname, :value => @filter_mname,:class=>"fieldw" %></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"><input class="view1" type="submit" name="button3" id="button3" value="View" /></td>
+      </tr>
+    </table></td>
+  </tr>
+
+</table>
+<% end %>
 <table>
   <tr>
     <th>Client</th>
@@ -32,3 +127,8 @@
   <% end %>
 <% end %>
 </table>
+
+<%#= render 'client_matter_search' %>
+
+
+

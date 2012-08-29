@@ -1,17 +1,27 @@
-<div id="firm_header">
-  <ul class="navigation">
-    <li><%= current_firm.name %> &gt;&gt;</liv>
-    <li>Matter Calendar Conflicts &amp; Contacts</li>
-    <li><%= link_to 'Clients & Matters', firm_clients_path(current_firm) %></li>
-    <li><%= link_to 'Time & Expenses', firm_time_entries_path(current_firm) %></li>
-    <li><%= link_to 'Invoices & Payments', firm_invoices_path(current_firm) %></li>
-    <li>Reports</li>
-<!--
-    <li><%= link_to 'Time Entry', firm_time_entries_path(current_firm) %></li>
-    <li><%= link_to 'Expense Entry', firm_expense_entries_path(current_firm) %></li>
-    <li><%= link_to 'Invoices', firm_invoices_path(current_firm) %></li>
-    <li><%= link_to 'Clients', firm_clients_path(current_firm) %></li>
-    <li><%= link_to 'Edit firm', edit_firm_path(current_firm) %></li>
--->
-  </ul>
+
+
+<div class="brdrBox1Content">
+<div class="aerobuttonmenu">
+
+<%= link_to "<span>Time</span>".html_safe, firm_time_entries_path(current_firm),:class=>"aero" %>
+			<%= link_to "<span>Expenses</span>".html_safe, firm_time_entries_path(current_firm),:class=>"aero" %>
+			<% if params[:controller] == "clients" && params[:action] == "index"%>
+			<%= link_to "<span>Client</span>".html_safe, firm_clients_path(current_firm),:class=>"aeroactive" %>
+			<%else %>
+			<%= link_to "<span>Client</span>".html_safe, firm_clients_path(current_firm),:class=>"aero" %>
+			<% end %>
+			<%= link_to "<span>Matter</span>".html_safe, firm_clients_path(current_firm),:class=>"aero" %>
+			<%= link_to "<span>Invoice</span>".html_safe,  firm_invoices_path(current_firm),:class=>"aero" %>
+			<a class="aero" href="#"><span>Trust </span></a>
+			<%= link_to "<span>Payment</span>".html_safe,  firm_invoices_path(current_firm),:class=>"aero" %>
+			<a class="aero" href="#"><span>Report </span></a>
+    
+    
 </div>
+
+<div class="clear"></div>
+<div class="mar10"><%= image_tag('shade.jpg',width: "934",height: "15")%></div>
+
+ <div class="clear"></div>
+
+   
