@@ -1,80 +1,155 @@
-<%= render 'shared/menu/invoices_and_payments', :active => :invoice %>
 
-<div id="invoices_filter">
+
 <%= semantic_form_for :filters, :html => { :method => :get } do |form| %>
-<table>
+  
+  <table class="tcontent" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>
-      <%= radio_button_tag(:faction, 'create_draft', @faction == 'create_draft') %> Create Draft Invoices
-      <br/><%= radio_button_tag(:faction, 'create_statement', @faction == 'create_statement') %> Create Statements
-      <br/><%= radio_button_tag(:faction, 'view_draft', @faction == 'view_draft') %> View Draft Invoices
-      <br/><%= radio_button_tag(:faction, 'view_sent', @faction == 'view_sent') %> View Sent Invoices
-    </td>
-    <td>
-      <%= check_box_tag :my_matters %></br>
-      <%= select_tag :client_ids, options_from_collection_for_select(current_firm.clients, :id, :name, @selected_client_ids), :multiple => true, :prompt => '-all clients-' %>
-    </td>
-    <td>
-      <div class="action_opts create_draft">
-        <%= form.input :cd_from, :as => :date, :label => 'Entries From', :input_html => { :value => @cd_from } %>
-        <%= form.input :cd_to, :as => :date, :label => 'Through', :input_html => { :value => @cd_to } %>
-        <%= form.input :cd_date, :as => :date, :label => 'Invoice Date', :input_html => { :value => @cd_date } %>
-      </div>
-      <div class="action_opts view_draft view_sent">
-        <%= form.input :vi_from, :as => :date, :label => 'Invoice Date From', :input_html => { :value => @vi_from } %>
-        <%= form.input :vi_to, :as => :date, :label => 'Through', :input_html => { :value => @vi_to } %>
-      </div>
-      <script>
-      function sync_opts(){
-        $('#invoices_filter .action_opts').hide();
-        var sel = '#invoices_filter .'+$('#invoices_filter input:radio[name=faction]:checked').val();
+    <td align="left" valign="top"><table width="90%" border="0" align="center" cellpadding="2" cellspacing="0">
+      <tr>
+        <td width="27%" align="center" valign="top">
+				<%= image_tag("generate_draft.png",width: "138",height: "39", alt: "draft",:onclick=> "sync_opts('create_draft')")%>
+				</td>
+        <td colspan="2" align="left" valign="top">
+				<%= image_tag("view_sent.png",width: "138",height: "39", alt: "sent",:onclick=> "sync_opts('view_sent')")%>
+				</td>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top">&nbsp;</td>
+        <td colspan="2" align="left" valign="top">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top">
+				<%= image_tag("generate_statement.png",width: "138",height: "39", alt: "create_statement",:onclick=> "sync_opts('create_statement')")%>
+				</td>
+        <td colspan="2" align="left" valign="top">Client Name<br />          
+				
+				
+				<input type="text" name="client_name" id="textfield" /></td>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top">&nbsp;</td>
+        <td align="left" valign="top">&nbsp;</td>
+        <td align="left" valign="top"></td>
+        <td align="left" valign="top">&nbsp;</td>
+        <td align="left" valign="top">&nbsp;</td>
+        </tr>
+      <tr>
+        <td align="center" valign="top">
+								<%= image_tag("view_draft.png",width: "138",height: "39", alt: "view draft",:onclick=> "sync_opts('view_draft')")%>
+				</td>
+        <td width="20%" align="left" valign="top">
+				<div class="actionopts view_draft view_sent">
+				<%= form.input :vi_from, :as => :date, :label => 'Invoice Date From', :input_html => { :value => @vi_from } %>
+			</div>	
+				<div class="actionopts create_draft">
+				<%= form.input :cd_from, :as => :date, :label => 'Entries From', :input_html => { :value => @cd_from } %>
+				<%= form.input :cd_date, :as => :date, :label => 'Invoice Date', :input_html => { :value => @cd_date } %>
+				</div>
+				
+				<!--<input class="clsFloatLeft" style="width:125px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+          <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" />--></td>
+        <td width="43%" align="left" valign="top">
+					<div class="actionopts view_draft view_sent">
+					<%= form.input :vi_to, :as => :date, :label => 'Through', :input_html => { :value => @vi_to } %>
+					</div>
+					<div class="actionopts create_draft">
+					<%= form.input :cd_to, :as => :date, :label => 'Through', :input_html => { :value => @cd_to } %>
+					</div>
+				<!--<input class="clsFloatLeft" style="width:125px; margin-right:4px;" type="text" name="textfield2" id="textfield2" /><img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" />-->           </td>
+      </tr>
+ 
+    </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div class="mar10">
+		<%= image_tag('shade.jpg',width: "934",height: "15")%>
+		</div></td>
+  </tr>
+    <tr>
+    <td height="5" ></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><table width="90%" align="center" cellpadding="8" cellspacing="0" id="zebra">
+      <tr>
+        <td width="4%" class="rtbdr">&nbsp;</td>
+        <td width="10%" height="45" align="center" valign="middle" class="topbdr"> Date   </td>
+        <td width="16%" height="45" align="center" valign="middle" class="topbdr">Client </td>
+        <td width="15%" height="45" align="center" valign="middle" class="topbdr">  Matter </td>
+        <td width="11%" height="45" align="center" valign="middle" class="topbdr"> Budget  </td>
+        <td width="11%" height="45" align="center" valign="middle" class="topbdr">Previously Invoiced</td>
+        <td width="7%" height="45" align="center" valign="middle" class="topbdr">New Invoice</td>
+        <td width="11%" height="45" align="center" valign="middle" class="topbdr rtbdr"> View</td>
+      </tr>
+			<% @invoices.each do |invoice| %>
+			 <tr>
+        <td class="rtbdr" valign="top">&nbsp;</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"><input type="radio" name="radio" id="radio" value="radio" /></td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"> 3/1/2012 </td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"> Alex</td>
+        <td align="center" class="topbdr"b valign="middle" bgcolor="#d1d1d1">Alex V.C</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1">$ 1,3779</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1">Viewed</td>
+        <td align="center" valign="middle" bgcolor="#d1d1d1" class="rtbdr topbdr"></td>
+      </tr>
+			
+			<% end %>
+			<% @invoices.each do |invoice| %>
+      <tr>
+        <td class="rtbdr" valign="top">&nbsp;</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"> 3/1/2012 </td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"> Alex</td>
+        <td align="center" class="topbdr"b valign="middle" bgcolor="#d1d1d1">Alex V.C</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1">$ 1,3779</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1">Viewed</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1">Viewed</td>
+        <td align="center" class="topbdr" valign="middle" bgcolor="#d1d1d1"><%#= link_to 'View', firm_invoice_path(current_firm, invoice) %></td>
+        <!-- <td align="center" valign="middle" bgcolor="#d1d1d1" class="rtbdr topbdr"><input type="radio" name="radio" id="radio2" value="radio" /></td> -->
+      </tr>
+			
+			<% end %>
+      
+     </table>
+			
+			</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><table width="90%" border="0" align="center" cellpadding="8" cellspacing="0">
+      <tr>
+        <td align="right"><img src="images/save.png" width="123" height="35" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  </table>
+
+<% end %>
+ 
+<%#= render 'shared/menu/invoices_and_payments', :active => :invoice %>  
+  <script>
+      function sync_opts(txt){
+        $('.actionopts').hide();
+        var sel = '.'+txt;
         $(sel).show();
       }
-      sync_opts();
-      $('#invoices_filter input:radio[name=faction]').click(sync_opts);
+      sync_opts('view_draft');      
       </script>
-    </td>
-    <td>
-      <%= button_tag "OK" %>
-    </td>
-  </tr>
-</table>
-<% end %>
-</div>
-
-<h2>Invoices</h2>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Client</th>
-    <th>Matter</th>
-    <th>Budget</th>
-    <th>Previously Invoiced</th>
-    <th>New Invoice</th>
-    <th>View</th>
-  </tr>
-<% @invoices.each do |invoice| %>
-  <tr>
-    <td><%= invoice.created_at %></td>
-    <td><%= link_to invoice.client.name, firm_client_path(current_firm, invoice.client) %></td>
-    <td>
-      <% case invoice.matters_list.size %>
-      <% when 0 %>
-        None selected
-      <% when 1 %>
-        <%= link_to invoice.matters_list[0].name, firm_client_matter_path(current_firm, invoice.client, invoice.matters_list[0]) %>
-      <% else %>
-        <table>
-        <% invoice.matters_list.each do |matter| %>
-          <tr><td><%= link_to matter.name, firm_client_matter_path(current_firm, invoice.client, matter) %></td></tr>
-        <% end %>
-        </table>
-      <% end %>
-    </td>
-    <td>???</td>
-    <td>???</td>
-    <td><%= link_to invoice.total_amount, edit_firm_invoice_path(current_firm, invoice) %></td>
-    <td><%= link_to 'View', firm_invoice_path(current_firm, invoice) %></td>
-  </tr>
-<% end %>
-</table>
