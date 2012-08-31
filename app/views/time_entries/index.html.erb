@@ -1,117 +1,155 @@
-<%= render 'shared/menu/time_and_expenses', :active => :time %>
 
-<div class="form_style_compact entry_form">
-<%= semantic_form_for [current_firm, @time_entry] do |form| %>
-<table>
+
+<form id="form1" name="form1" method="post" action="">
+  
+  <table class="tcontent" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>
-      <%= form.input :user, :member_value => :id, :member_name => :full_name, :label => 'Time Entry for' %>
-    </td>
-    <td>
-      <%= form.input :matter, :member_value => :id, :member_name => :full_name, :collection => current_firm.all_client_matters, :label => 'Client & Matter' %>
-      <table>
-        <tr>
-          <td>
-            <%= form.input :tstart, :hint => 'hh:mm', :input_html => { :maxlength => 5, :size => 5 }, :label => 'Start' %>
-          </td>
-          <td>
-            <%= form.input :tend, :hint => 'hh:mm', :input_html => { :maxlength => 5, :size => 5 }, :label => 'Stop' %>
-          </td>
-          <td>
-            <%= form.input :duration, :hint => 'minutes', :input_html => { :maxlength => 5, :size => 3 }, :required => false %>
-          </td>
-          <td>
-            <%= form.input :rate, :input_html => { :maxlength => 9, :size => 3 }, :required => false, :label => 'Rate/hr' %>
-          </td>
-          <td>
-            <%= form.input :fixed_fee_amount, :input_html => { :maxlength => 9, :size => 4 }, :required => false %>
-          </td>
-          <td>
-            ??? Save as timer
-          </td>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="8">
+      <tr>
+        <td width="9%" align="left" valign="middle">Time Keeper </td>
+        <td width="19%" align="left" valign="middle"><input type="text" name="textfield" id="textfield" /></td>
+        <td width="5%" align="left" valign="middle">&nbsp;</td>
+        <td width="27%" align="left" valign="middle">&nbsp;</td>
+        <td width="7%" align="left" valign="middle">Task          </td>
+        <td width="18%" align="left" valign="middle"><input style="width:115px; " type="text" name="textfield3" id="textfield3" /></td>
+        <td width="15%" rowspan="5" align="left" valign="top"><table width="100%" border="0" cellspacing="6 cellpadding="0">
+          <tr>
+            <td align="left" valign="top"><input class="viewcodes" type="submit" name="button" id="button" value="viewcodes" /></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><input class="spellcheck" type="submit" name="button2" id="button2" value="spellcheck" /></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><input class="applycodes" type="submit" name="button3" id="button3" value="applycodes" /></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><input class="save1" type="submit" name="button4" id="button4" value="Save" /></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><input class="cancel" type="submit" name="button5" id="button5" value="Cancel" /></td>
+          </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="middle">DATE</td>
+        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+      <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" /></td>
+        <td align="left" valign="middle">&nbsp;</td>
+        <td align="left" valign="middle">&nbsp;</td>
+        <td colspan="2" rowspan="3" align="left" valign="middle"><textarea name="textarea" id="textarea" cols="25" rows="9">NOTES</textarea></td>
         </tr>
-      </table>
-    </td>
+      <tr>
+        <td align="left" valign="middle">Start</td>
+        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+      <img class="clsFloatLeft" src="images/go.png" width="35" height="32" /></td>
+        <td align="left" valign="middle">End</td>
+        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+          <img class="clsFloatLeft" src="images/go.png" width="35" height="32" /></td>
+        </tr>
+      <tr>
+        <td colspan="4" align="left" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle">Duration<br />
+              <input style="width:115px; type="text="text" name="textfield2" id="textfield2" /></td>
+            <td align="left" valign="middle">&nbsp;</td>
+            <td align="left" valign="middle">Rate<br />
+  <input style="width:115px; type="text="text" name="textfield5" id="textfield5" /></td>
+            <td align="left" valign="middle">&nbsp;</td>
+            <td align="left" valign="middle">Flat Rate<br />              <input style="width:115px; type="text="text"" name="textfield6" id="textfield6" /></td>
+            </tr>
+        </table></td>
+        </tr>
+      <tr>
+        <td colspan="6" align="left" valign="top">&nbsp;</td>
+        </tr>
+      </table></td>
   </tr>
   <tr>
-    <td>
-      <%= form.input :tdate %>
-    </td>
-    <td>
-      <table>
+    <td align="left" valign="top"><div ><img src="images/shade.jpg" width="934" height="15" /></div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      <table width="100%" border="0" cellspacing="0" cellpadding="8">
         <tr>
-          <td>
-            <%= form.input :task %>
-            <%= form.input :notes, :as => :text, :input_html => { :rows => 3 }, :required => false %>
-          </td>
-          <td>
-            <%= form.actions %>
-            <br/>
-            <%= link_to 'Cancel', firm_time_entries_path(current_firm) %>
-          </td>
+          <td width="8%" align="left" valign="top">View</td>
+          <td width="22%" align="left" valign="top"><input type="text" name="textfield9" id="textfield9" /></td>
+          <td width="12%" align="left" valign="top">&nbsp;</td>
+          <td width="17%" align="left" valign="top">&nbsp;</td>
+          <td width="18%" align="left" valign="top">&nbsp;</td>
+          <td width="23%" align="left" valign="top">&nbsp;</td>
+          </tr>
+        <tr>
+          <td colspan="6" align="left" valign="top"><table width="50%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" />
+                Billed </td>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" /> Unbilled </td>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" /> All</td>
+              <td align="center" valign="top"><input type="text" name="textfield7" id="textfield7" /></td>
+            </tr>
+          </table></td>
+          </tr>
+        <tr>
+          <td align="left" valign="top">Range </td>
+          <td align="left" valign="top"><input class="clsFloatLeft" style="margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+      <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" /></td>
+          <td align="right" valign="top">THROUGH </td>
+          <td align="left" valign="top"><input type="text" name="textfield10" id="textfield10" /></td>
+          <td align="right" valign="top"> CLIENT MATTER</td>
+          <td align="left" valign="top"><input type="text" name="textfield11" id="textfield11" /></td>
+          </tr>
+        <tr>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
         </tr>
-      </table>
-    </td>
+        <tr>
+          <td colspan="6" align="left" valign="top"><table id="zebra" width="100%" cellspacing="0" cellpadding="8">
+            <tr>
+              <td class="rtbdr">&nbsp;</td>
+              <td height="45" class="topbdr">Date </td>
+              <td height="45" class="topbdr"> Professional </td>
+              <td height="45" class="topbdr">Client Matter</td>
+              <td height="45" class="topbdr"> Task </td>
+              <td height="45" class="topbdr"> Start </td>
+              <td height="45" class="topbdr">End</td>
+              <td height="45" class="topbdr">Duration</td>
+              <td class="topbdr">Rate</td>
+              <td height="45" class="topbdr">Total</td>
+              <td height="45" class="topbdr rtbdr">Invoice</td>
+              </tr>
+							<%i = 1%>
+							<% @time_entries.each do |time_entry| %>
+            <tr>
+              <td class="rtbdr" valign="middle">
+							<table id="zebrano" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr><td align="left" valign="top">
+								<%= link_to image_tag('edit.png',width: "16",height: "15"), edit_firm_time_entry_path(current_firm, time_entry) %>
+								</td></tr>
+                <tr><td align="left" valign="top"><%#= image_tag('minus.png',width: "13",height: "13")%></td></tr>
+                </table></td>
+              <td height="45" class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= time_entry.tdate %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"> <%= time_entry.user.full_name %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"> <%= time_entry.matter.name %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= time_entry.task.name %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= time_entry.tstart %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= time_entry.tend %></td>
+              <td height="45"  class="topbdr" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= time_entry.duration %></td>
+              <td align="center"  class="topbdr" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"> <%= time_entry.rate %></td>
+              <td height="45" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>" class="topbdr"><%= time_entry.fixed_fee_amount %></td>
+              <td height="45" align="center" valign="middle" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>" class="rtbdr topbdr"><%= link_to time_entry.invoice_id, firm_invoice_path(current_firm, time_entry.invoice_id) unless time_entry.invoice_id.nil? %></td>
+              </tr>
+						<%i = i+1 %>
+						<% end %>
+				</table>
+            </td>
+        </tr>
+        </table></td>
   </tr>
 </table>
-<% end %>
-</div>
 
-<hr noshade size="1">
-
-<table>
-  <tr>
-    <td>
-      View
-      <select>
-        <option>Today Only</option>
-      </select>
-      Unbilled
-      Billed
-      All
-      All Professionals
-    </td>
-    <td>
-      <div>
-        Entries for <input type="text"> Through <input type="text"> <button>Show</button>
-        <a href="">Weekly View</a>
-        <a href="">Monthly View</a>
-        <a href="">View Report</a>
-      </div>
-      <div>
-        Client-Matter <select><option>all Client-Matter</option></select>
-      </div>
-      
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Professional</th>
-          <th>Client-Matter</th>
-          <th>Task</th>
-          <th>Start</th>
-          <th>Stop Total:</th>
-          <th>Duration</th>
-          <th>Rate Total:</th>
-          <th>Total:</th>
-          <th>Invoice</th>
-          <th></th>
-        </tr>
-      <% @time_entries.each do |time_entry| %>
-        <tr>
-          <td><%= time_entry.tdate %></td>
-          <td><%= time_entry.user.full_name %></td>
-          <td><%= time_entry.matter.name %></td>
-          <td><%= time_entry.task.name %></td>
-          <td>??? <%= time_entry.tstart %></td>
-          <td>??? <%= time_entry.tend %></td>
-          <td><%= time_entry.duration %></td>
-          <td>??? <%= time_entry.rate %></td>
-          <td>??? <%= time_entry.fixed_fee_amount %></td>
-          <td><%= link_to time_entry.invoice_id, firm_invoice_path(current_firm, time_entry.invoice_id) unless time_entry.invoice_id.nil? %></td>
-          <td><%= link_to 'Edit', edit_firm_time_entry_path(current_firm, time_entry) %></td>
-        </tr>
-      <% end %>
-      </table>
-    </td>
-  </tr>
-</table>
+</form>
+	<%= render 'shared/menu/time_and_expenses', :active => :time %>
