@@ -1,4 +1,145 @@
-<%= render 'shared/menu/time_and_expenses', :active => :expense %>
+<%#= render 'shared/menu/time_and_expenses', :active => :expense %>
+
+<form id="form1" name="form1" method="post" action="">
+  
+  <table class="tcontent" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="8">
+      <tr>
+        <td width="16%" align="left" valign="top">Time Keeper </td>
+        <td width="20%" align="left" valign="top"><input type="text" name="textfield" id="textfield" /></td>
+        <td width="9%" align="right" valign="top">DATE</td>
+        <td width="40%" align="left" valign="top"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+      <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" /></td>
+        <td width="15%" align="left" valign="top"><input class="viewcodes" type="submit" name="button" id="button" value="viewcodes" /></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">Client Matter</td>
+        <td align="left" valign="top"><input type="text" name="textfield2" id="textfield2" /></td>
+        <td align="left" valign="top">&nbsp;</td>
+        <td align="left" valign="top">&nbsp;</td>
+        <td align="left" valign="top"><input class="spellcheck" type="submit" name="button" id="button" value="spellcheck" /></td>
+      </tr>
+      <tr>
+        <td colspan="4" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="1">
+          <tr>
+            <td align="left" valign="top">&nbsp;</td>
+            <td align="left" valign="top">&nbsp;</td>
+            <td align="center" valign="top">Price </td>
+            <td align="center" valign="top">Quantity </td>
+            <td align="center" valign="top">Markup </td>
+            <td align="center" valign="top"> Fixed Amount</td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">Expense</td>
+            <td align="center" valign="top"><input class="wid" type="text" name="textfield3" id="textfield3" /></td>
+            <td align="center" valign="top"><input class="wid" type="text" name="textfield5" id="textfield5" /></td>
+            <td align="center" valign="top"><input class="wid" type="text" name="textfield6" id="textfield6" /></td>
+            <td align="center" valign="top"><input class="wid" type="text" name="textfield8" id="textfield8" /></td>
+            <td align="center" valign="top"><input class="wid" type="text" name="textfield7" id="textfield7" /></td>
+          </tr>
+        </table></td>
+        <td align="left" valign="top"><input class="applycodes" type="submit" name="button" id="button" value="applycodes" /></td>
+      </tr>
+      <tr>
+        <td colspan="4" rowspan="2" align="left" valign="top"><textarea name="textarea" id="textarea" cols="95" rows="5">NOTES</textarea></td>
+        <td align="left" valign="top"><input class="save1" type="submit" name="button" id="button" value="Save" /></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><input class="cancel" type="submit" name="button" id="button" value="Cancel" /></td>
+      </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div ><img src="images/shade.jpg" width="934" height="15" /></div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      <table width="100%" border="0" cellspacing="0" cellpadding="8">
+        <tr>
+          <td width="8%" align="left" valign="top">View</td>
+          <td width="22%" align="left" valign="top"><input type="text" name="textfield9" id="textfield9" /></td>
+          <td width="12%" align="left" valign="top">&nbsp;</td>
+          <td width="17%" align="left" valign="top">&nbsp;</td>
+          <td width="18%" align="left" valign="top">&nbsp;</td>
+          <td width="23%" align="left" valign="top">&nbsp;</td>
+          </tr>
+        <tr>
+          <td colspan="6" align="left" valign="top"><table width="300" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" />
+                Billed </td>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" /> Unbilled </td>
+              <td align="left" valign="top"><input type="radio" name="radio" id="radio" value="radio" /> All</td>
+            </tr>
+          </table></td>
+          </tr>
+        <tr>
+          <td align="left" valign="top">Range </td>
+          <td align="left" valign="top"><input class="clsFloatLeft" style="margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+      <%= image_tag('calendar.jpg',width: "19",height: "20")%>			
+			</td>
+          <td align="right" valign="top">THROUGH </td>
+          <td align="left" valign="top"><input type="text" name="textfield10" id="textfield10" /></td>
+          <td align="right" valign="top"> CLIENT MATTER</td>
+          <td align="left" valign="top"><input type="text" name="textfield11" id="textfield11" /></td>
+          </tr>
+        <tr>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"></td>
+        </tr>
+        <tr>
+          <td colspan="6" align="left" valign="top"><table id="zebra" width="100%" cellspacing="0" cellpadding="8">
+            <tr>
+              <td class="rtbdr">&nbsp;</td>
+              <td height="45" class="topbdr">Date </td>
+              <td height="45" class="topbdr"> Professional </td>
+              <td height="45" class="topbdr">Client Matter</td>
+              <td height="45" class="topbdr"> Expense </td>
+              <td height="45" class="topbdr"> Price </td>
+              <td height="45" class="topbdr">Quantity</td>
+              <td height="45" class="topbdr">Markup</td>
+              <td height="45" class="topbdr rtbdr">Invoice</td>
+              </tr>
+							<% i = 1%>
+							<% @expense_entries.each do |expense_entry| %>
+            <tr>
+						<td class="rtbdr">
+					 <table id="zebrano" width="100%" border="0" cellspacing="0" cellpadding="0">
+					 <tr><td align="left" valign="top"><%= link_to image_tag('edit.png',width: "16",height: "15"), edit_firm_expense_entry_path(current_firm, expense_entry) %></td></tr>
+					 <tr><td align="left" valign="top"><%= image_tag('minus.png',width: "13",height: "13") %></td></tr>
+					 </table>
+					 </td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.tdate.strftime("%m/%d/%Y") %> </td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"> <%= expense_entry.user.full_name %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.matter.name %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.expense.name %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.price %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.qty %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>"><%= expense_entry.markup_perc %></td>
+              <td height="45" bgcolor="<%= i%2 == 0 ? ' ' : '#d0d0d0' %>" class="rtbdr"><%= link_to expense_entry.invoice_id, firm_invoice_path(current_firm, expense_entry.invoice_id) unless expense_entry.invoice_id.nil? %></td>
+              </tr>
+							<%i = i+1%>
+<% end %>      
+
+</table>
+            </td>
+        </tr>
+        </table></td>
+  </tr>
+</table>
+
+</form>
+   
+
+ 
+
+
+
 
 <div class="form_style_compact entry_form">
 <%= semantic_form_for [current_firm, @expense_entry] do |form| %>
