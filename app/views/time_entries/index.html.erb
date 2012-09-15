@@ -1,61 +1,94 @@
 
 
-<form id="form1" name="form1" method="post" action="">
+<!-- <form id="form1" name="form1" method="post" action=""> -->
+<%= semantic_form_for [current_firm, @time_entry] do |form| %>
   
   <table class="tcontent" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="8">
       <tr>
-        <td width="9%" align="left" valign="middle">Time Keeper </td>
-        <td width="19%" align="left" valign="middle"><input type="text" name="textfield" id="textfield" /></td>
+        <td width="9%" align="left" valign="middle"><!-- Time Keeper --></td>
+        <td width="19%" align="left" valign="middle">
+				 <%= form.input :user, :member_value => :id, :member_name => :full_name, :label => 'Time Keeper' %>
+				
+				<!-- <input type="text" name="textfield" id="textfield" /> --></td>
         <td width="5%" align="left" valign="middle">&nbsp;</td>
         <td width="27%" align="left" valign="middle">&nbsp;</td>
-        <td width="7%" align="left" valign="middle">Task          </td>
-        <td width="18%" align="left" valign="middle"><input style="width:115px; " type="text" name="textfield3" id="textfield3" /></td>
+        <td width="7%" align="left" valign="middle"><!-- Task -->         </td>
+        <td width="18%" align="left" valign="middle">
+				<%= form.input :task %>
+			<!-- 	<input style="width:115px; " type="text" name="textfield3" id="textfield3" /> --></td>
         <td width="15%" rowspan="5" align="left" valign="top"><table width="100%" border="0" cellspacing="6 cellpadding="0">
           <tr>
-            <td align="left" valign="top"><input class="viewcodes" type="submit" name="button" id="button" value="viewcodes" /></td>
+            <td align="left" valign="top">
+						<%= form.actions %>
+						<!--<input class="viewcodes" type="submit" name="button" id="button" value="viewcodes" /> -->
+						
+						</td>
           </tr>
           <tr>
-            <td align="left" valign="top"><input class="spellcheck" type="submit" name="button2" id="button2" value="spellcheck" /></td>
+            <td align="left" valign="top"><!-- <input class="spellcheck" type="submit" name="button2" id="button2" value="spellcheck" />--></td>
           </tr>
           <tr>
-            <td align="left" valign="top"><input class="applycodes" type="submit" name="button3" id="button3" value="applycodes" /></td>
+            <td align="left" valign="top"><!-- <input class="applycodes" type="submit" name="button3" id="button3" value="applycodes" />--></td>
           </tr>
           <tr>
-            <td align="left" valign="top"><input class="save1" type="submit" name="button4" id="button4" value="Save" /></td>
+            <td align="left" valign="top"><!-- <input class="save1" type="submit" name="button4" id="button4" value="Save" /> --></td>
           </tr>
           <tr>
-            <td align="left" valign="top"><input class="cancel" type="submit" name="button5" id="button5" value="Cancel" /></td>
+            <td align="left" valign="top"><!-- <input class="cancel" type="submit" name="button5" id="button5" value="Cancel" /> --></td>
           </tr>
           </table></td>
       </tr>
       <tr>
-        <td align="left" valign="middle">DATE</td>
-        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
-      <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" /></td>
+        <td align="left" valign="middle"><!-- DATE --></td>
+        <td align="left" valign="middle">
+				 <%= form.input :tdate %>
+				<!-- <input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" /> -->
+      <img class="clsFloatLeft" src="/images/calendar.jpg" width="19" height="20" /></td>
         <td align="left" valign="middle">&nbsp;</td>
         <td align="left" valign="middle">&nbsp;</td>
-        <td colspan="2" rowspan="3" align="left" valign="middle"><textarea name="textarea" id="textarea" cols="25" rows="9">NOTES</textarea></td>
+        <td colspan="2" rowspan="3" align="left" valign="middle">
+				<!-- <textarea name="textarea" id="textarea" cols="25" rows="9">NOTES</textarea> -->
+				<%= form.input :notes, :as => :text, :input_html => { :rows => 3 }, :required => false %>
+				</td>
         </tr>
       <tr>
-        <td align="left" valign="middle">Start</td>
-        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+        <td align="left" valign="middle"><!-- Start --></td>
+        <td align="left" valign="middle">
+				<%= form.input :tstart, :hint => 'hh:mm', :input_html => { :maxlength => 5, :size => 5 }, :label => 'Start' %>
+				<!-- <input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" /> -->
       <img class="clsFloatLeft" src="images/go.png" width="35" height="32" /></td>
-        <td align="left" valign="middle">End</td>
-        <td align="left" valign="middle"><input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" />
+        <td align="left" valign="middle"><!-- End --></td>
+        <td align="left" valign="middle">
+				  <%= form.input :tend, :hint => 'hh:mm', :input_html => { :maxlength => 5, :size => 5 }, :label => 'Stop' %>
+				<!-- <input class="clsFloatLeft" style="width:115px; margin-right:4px;" type="text" name="textfield4" id="textfield4" /> -->
           <img class="clsFloatLeft" src="images/go.png" width="35" height="32" /></td>
         </tr>
       <tr>
         <td colspan="4" align="left" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td align="left" valign="middle">Duration<br />
-              <input style="width:115px; type="text="text" name="textfield2" id="textfield2" /></td>
+            <td align="left" valign="middle"><!--Duration --><br />
+              <%= form.input :duration, :hint => 'minutes', :input_html => { :maxlength => 5, :size => 3 }, :required => false %>
+							
+							<!-- <input style="width:115px; type="text="text" name="textfield2" id="textfield2" /> -->
+							
+							</td>
             <td align="left" valign="middle">&nbsp;</td>
-            <td align="left" valign="middle">Rate<br />
-  <input style="width:115px; type="text="text" name="textfield5" id="textfield5" /></td>
+            <td align="left" valign="middle"><!-- Rate --><br />
+						
+						<%= form.input :rate, :input_html => { :maxlength => 9, :size => 3 }, :required => false, :label => 'Rate/hr' %>
+						<!-- <input style="width:115px; type="text="text" name="textfield5" id="textfield5" /> -->
+	
+	</td>
             <td align="left" valign="middle">&nbsp;</td>
-            <td align="left" valign="middle">Flat Rate<br />              <input style="width:115px; type="text="text"" name="textfield6" id="textfield6" /></td>
+            <td align="left" valign="middle"><!-- Flat Rate --><br />
+						
+						   <%= form.input :fixed_fee_amount, :input_html => { :maxlength => 9, :size => 4 }, :required => false %>
+						<!-- <input style="width:115px; type="text="text"" name="textfield6" id="textfield6" /> -->
+						
+						
+						</td>
             </tr>
         </table></td>
         </tr>
@@ -72,7 +105,18 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="8">
         <tr>
           <td width="8%" align="left" valign="top">View</td>
-          <td width="22%" align="left" valign="top"><input type="text" name="textfield9" id="textfield9" /></td>
+          <td width="22%" align="left" valign="top">
+					      <select>
+        <option>Today Only</option>
+      </select>
+      <!--Unbilled
+      Billed
+      All
+      All Professionals 
+					 <input type="text" name="textfield9" id="textfield9" /> -->
+					
+					
+					</td>
           <td width="12%" align="left" valign="top">&nbsp;</td>
           <td width="17%" align="left" valign="top">&nbsp;</td>
           <td width="18%" align="left" valign="top">&nbsp;</td>
@@ -95,13 +139,17 @@
       <img class="clsFloatLeft" src="images/calendar.jpg" width="19" height="20" /></td>
           <td align="right" valign="top">THROUGH </td>
           <td align="left" valign="top"><input type="text" name="textfield10" id="textfield10" /></td>
-          <td align="right" valign="top"> CLIENT MATTER</td>
-          <td align="left" valign="top"><input type="text" name="textfield11" id="textfield11" /></td>
+          <td align="right" valign="top">  CLIENT MATTER </td>
+          <td align="left" valign="top">
+					  <%= form.input :matter, :member_value => :id, :member_name => :full_name, :collection => current_firm.all_client_matters %>
+					<!-- <input type="text" name="textfield11" id="textfield11" /> --></td>
           </tr>
         <tr>
-          <td height="8" align="left" valign="top"></td>
-          <td height="8" align="left" valign="top"></td>
-          <td height="8" align="left" valign="top"></td>
+          <td height="8" align="left" valign="top"><a href="">Weekly View</a>
+        
+        
+          <td height="8" align="left" valign="top"><a href="">Monthly View</a></td>
+          <td height="8" align="left" valign="top"><a href="">View Report</a></td></td>
           <td height="8" align="left" valign="top"></td>
           <td height="8" align="left" valign="top"></td>
           <td height="8" align="left" valign="top"></td>
@@ -151,5 +199,7 @@
   </tr>
 </table>
 
-</form>
-	<%= render 'shared/menu/time_and_expenses', :active => :time %>
+<% end %>
+<!-- </form>-->
+
+	<%#= render 'shared/menu/time_and_expenses', :active => :time %>
